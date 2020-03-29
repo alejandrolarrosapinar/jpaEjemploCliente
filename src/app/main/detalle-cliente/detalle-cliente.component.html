@@ -1,0 +1,56 @@
+<mat-card>
+    <mat-card-title>Detalle del cliente</mat-card-title>
+    <p>
+<mat-form-field class="example-full-width" style="align-content:center;">
+    <mat-label>Nombre</mat-label>
+    <input matInput placeholder="" [(ngModel)]="cliente.nombre" value="" name="nombre">
+</mat-form-field>
+</p>
+<p>
+<mat-form-field class="example-full-width" style="align-content:center; ">
+    <mat-label>Apellido 1</mat-label>
+    <input matInput placeholder="" [(ngModel)]="cliente.apellido1" value="" name="apellido1">
+</mat-form-field>
+
+<mat-form-field class="example-full-width" style="align-content:center; ">
+    <mat-label>Apellido 2</mat-label>
+    <input matInput placeholder="" [(ngModel)]="cliente.apellido2" value="" name="apellido2">
+</mat-form-field>
+</p>
+<p>
+<mat-form-field class="example-full-width" style="align-content:center; ">
+  <mat-label>DNI</mat-label>
+  <input matInput placeholder="" [(ngModel)]="cliente.dni" value="" name="dni">
+</mat-form-field>
+
+<mat-form-field class="example-full-width" style="align-content:center; ">
+  <mat-label>Fecha nacimiento</mat-label>
+  <input matInput placeholder="" [(ngModel)]="cliente.fechaNacimiento" value="" name="fechaNacimiento">
+</mat-form-field>
+</p>
+
+<button mat-button (click)="guardarCliente()">Guardar</button>
+</mat-card>
+
+
+<mat-card>
+    <mat-card-title>Pedidos</mat-card-title>
+<table mat-table [dataSource]="cliente.tpedidos" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fecha">
+        <th mat-header-cell *matHeaderCellDef>Fecha</th>
+        <td mat-cell *matCellDef="let element"> {{element.fecha | date: 'dd/MM/yyyy'}} </td>
+      </ng-container>
+
+     
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+
+</table>
+
+</mat-card>
